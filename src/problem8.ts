@@ -4,11 +4,12 @@
   const validateKeys = <T>(obj: T, keys: (keyof T)[]) => {
     let flag: boolean = true;
 
-    keys.forEach((key) => {
-      if (!Object.keys(obj as object).includes(key as string)) {
+    for (const key of keys) {
+      if (key in (obj as object) === false) {
         flag = false;
+        break;
       }
-    });
+    }
 
     return flag;
   };
